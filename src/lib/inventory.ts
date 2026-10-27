@@ -71,6 +71,29 @@ export const seeds: SeedLot[] = [
   { id: "16", crop: "Trigo", cultivar: "BRS 420 (grão para plantio)", seedClass: "Grão para plantio", treated: false, germination: 86, purity: 95, lot: "TR-3405", quantity: 110, unit: "sacos 40 kg", reserved: 0, harvest: "2026", supplier: "Cooperativa regional", basePerPackage: 40, baseUnit: "kg", seedRatePerHa: 110, rasCode: "", storage: "Ambiente seco e ventilado", lotState: "no estoque", expiry: "2027-01-20", location: "Galpão B", price: 165 },
   { id: "17", crop: "Soja", cultivar: "BMX Potência RR (grão para plantio)", seedClass: "Grão para plantio", treated: true, germination: 85, purity: 96, lot: "SJ-2450", quantity: 150, unit: "sacos 40 kg", reserved: 25, harvest: "2025/26", supplier: "Produtor parceiro", basePerPackage: 40, baseUnit: "kg", seedRatePerHa: 110, rasCode: "", storage: "Ambiente seco e ventilado", lotState: "no estoque", expiry: "2027-02-28", location: "Galpão A", price: 340 },
 ];
+const unidadesPorLote: Record<string, SeedLot["unidade"]> = {
+  "1": "Mato Grosso",
+  "2": "Mato Grosso",
+  "3": "Bahia",
+  "4": "Mato Grosso",
+  "5": "Bahia",
+  "6": "Bahia",
+  "7": "Rio Grande do Sul",
+  "8": "Rio Grande do Sul",
+  "9": "Bahia",
+  "10": "Mato Grosso",
+  "11": "Rio Grande do Sul",
+  "12": "Mato Grosso",
+  "13": "Bahia",
+  "14": "Rio Grande do Sul",
+  "15": "Rio Grande do Sul",
+  "16": "Rio Grande do Sul",
+  "17": "Mato Grosso",
+};
+
+seeds.forEach((lote) => {
+  lote.unidade = unidadesPorLote[lote.id];
+});
 
 export type Status = "vencido" | "critico" | "atencao" | "ok";
 
