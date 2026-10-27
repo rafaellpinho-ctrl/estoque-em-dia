@@ -143,7 +143,8 @@ function Index() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [openStatus, setOpenStatus] = useState<Status | null>(null);
   const [tab, setTab] = useState("");
-
+  const [unidade, setUnidade] = useState("Todas as unidades");
+  
   useEffect(() => setToday(new Date()), []);
 
   const rows = useMemo(() => {
