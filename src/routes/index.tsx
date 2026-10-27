@@ -140,10 +140,11 @@ function Index() {
   const [query, setQuery] = useState("");
   const [crop, setCrop] = useState("Todas as culturas");
   const [seedClass, setSeedClass] = useState("Todas as classes");
+  const [unidade, setUnidade] = useState("Todas as unidades");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [openStatus, setOpenStatus] = useState<Status | null>(null);
   const [tab, setTab] = useState("");
-
+  
   useEffect(() => setToday(new Date()), []);
 
   const rows = useMemo(() => {
@@ -158,10 +159,11 @@ function Index() {
         (s) =>
           (crop === "Todas as culturas" || s.crop === crop) &&
           (seedClass === "Todas as classes" || s.seedClass === seedClass) &&
+          (unidade === "Todas as unidades" || s.unidade === unidade) &&
           normalize(`${s.cultivar} ${s.crop} ${s.lot} ${s.supplier} ${s.harvest}`).includes(q),
       )
       .sort((a, b) => a.days - b.days);
-  }, [today, query, crop, seedClass]);
+  }, [today, query, crop, seedClass, unidade]);
 
   const counts = rows.reduce(
     (acc, r) => ({ ...acc, [r.status]: (acc[r.status] ?? 0) + 1 }),
@@ -176,7 +178,7 @@ function Index() {
 
   const crops = ["Todas as culturas", ...Array.from(new Set(seeds.map((s) => s.crop)))];
   const classes = ["Todas as classes", ...Array.from(new Set(seeds.map((s) => s.seedClass)))];
-
+  const unidades = ["Todas as unidades", "Mato Grosso", "Rio Grande do Sul", "Bahia"];
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b border-border bg-primary text-primary-foreground">
@@ -289,6 +291,17 @@ function Index() {
           >
             {classes.map((c) => <option key={c}>{c}</option>)}
           </select>
+          <select
+  value={unidade}
+  onChange={(e) => setUnidade(e.target.value)}
+  className="rounded-md border bg-background px-3 py-2 text-sm"
+>
+  {unidades.map((u) => (
+    <option key={u} value={u}>
+      {u}
+    </option>
+  ))}
+</select>
         </div>
 
         <div className="overflow-x-auto rounded-lg border border-border bg-card">
