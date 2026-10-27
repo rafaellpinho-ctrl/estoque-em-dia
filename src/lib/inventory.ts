@@ -48,6 +48,7 @@ export interface SeedLot {
   lotState: LotState;
   expiry: string; // ISO date — validade da análise de germinação do lote
   location: string;
+  unidade?: "Mato Grosso" | "Rio Grande do Sul" | "Bahia";
   price: number; // R$ por unidade — VALOR DE EXEMPLO
 }
 
