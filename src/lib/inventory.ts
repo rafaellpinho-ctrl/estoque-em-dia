@@ -72,6 +72,7 @@ export const seeds: SeedLot[] = [
   { id: "17", crop: "Soja", cultivar: "BMX Potência RR (grão para plantio)", seedClass: "Grão para plantio", treated: true, germination: 85, purity: 96, lot: "SJ-2450", quantity: 150, unit: "sacos 40 kg", reserved: 25, harvest: "2025/26", supplier: "Produtor parceiro", basePerPackage: 40, baseUnit: "kg", seedRatePerHa: 110, rasCode: "", storage: "Ambiente seco e ventilado", lotState: "no estoque", expiry: "2027-02-28", location: "Galpão A", price: 340 },
 ];
 const unidadesPorLote: Record<string, SeedLot["unidade"]> = {
+  // Distribuição dos lotes entre as unidades
   "1": "Mato Grosso",
   "2": "Mato Grosso",
   "3": "Bahia",
